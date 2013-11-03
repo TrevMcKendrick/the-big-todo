@@ -1,0 +1,7 @@
+
+<form action="<%= todo_lists_path %>" method="POST">
+    <%= token_tag nil %>
+    <label for="todo_list_name">Todo name</label>
+    <input type="text" name="todo_list[name]" id="todo_list_name"> <br>
+    <input type="submit" value="Create Todo list">
+</form>

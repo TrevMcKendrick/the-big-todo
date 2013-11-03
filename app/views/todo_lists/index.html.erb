@@ -1,0 +1,23 @@
+<h1>All Todo Lists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todo_lists.each do |todo_list| %>
+      <tr>
+        <td><%= link_to todo_list.name, todo_list%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= render 'form' %>

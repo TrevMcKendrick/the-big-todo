@@ -35,6 +35,14 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  # gem 'better_errors'
+  # gem 'binding_of_caller'
+end
+
+group :test, :development do
+  gem 'pry'
+  # gem 'better_errors'
+  # gem 'binding_of_caller'
 end
 
 # Use ActiveModel has_secure_password
@@ -46,5 +54,5 @@ end
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
-# Use debugger
+#Use debugger
 # gem 'debugger', group: [:development, :test]
