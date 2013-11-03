@@ -5,7 +5,7 @@ class TodosController < ApplicationController
     @todo = Todo.new(todo_params)
     
       if @todo.save
-        redirect_to todos_url, notice: 'Todo was successfully created.'
+        redirect_to @todo.todo_list, notice: 'Todo was successfully created.'
       else
         render action: 'new'
       end
@@ -15,7 +15,7 @@ class TodosController < ApplicationController
 
   private
     def todo_params
-      params.require(:todo).permit(:name)
+      params.require(:todo).permit(:name, :todo_list_id)
     end
 
 end
