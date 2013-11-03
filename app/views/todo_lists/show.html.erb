@@ -1,13 +1,17 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%= @todo_list.name %></h1>
 
+<ul id="todos">
+<% @todo_list.todos.each do |todo| %>
+  <li><%= todo.name %></li>
+<% end %>
+</ul>
 
-
-<div id="todos">
-  <%= render 'todos/form' %>
-</div>
+<h3>Add Todo:</h3>
+<%= form_for(@todo) do |f| %>
+    <%= f.text_field :name %><br>
+    <%= f.hidden_field :todo_list_id %>
+    <%= f.submit 'Create Todo' %>
+<% end %> 
 </br>
-
 
 <%= link_to 'Back to list', todo_lists_path %>

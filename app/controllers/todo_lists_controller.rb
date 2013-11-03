@@ -1,47 +1,37 @@
 class TodoListsController < ApplicationController
-
-  def show
-    @todo_list = TodoList.find(params[:id])
-  end
+  before_action :set_todo_list, only: [:show]
 
   def index
     @todo_lists = TodoList.all
-  end
-
-  def new
     @todo_list = TodoList.new
-
   end
-
+  
   def create
-    
     @todo_list = TodoList.new(todo_list_params)
-    
-    #respond_to do |format|
       if @todo_list.save
-        redirect_to todo_lists_url, notice: 'Todo was successfully created.'
-       # format.json { render action: 'show', status: :created, location: @todo_list }
+        redirect_to @todo_list, notice: 'New list was successfully created.'
       else
-        render action: 'new'
-        #format.json { render json: @todo_list.errors, status: :unprocessable_entity }
+        render action: 'index'
       end
   end
 
-  def edit
-    @todo_list = TodoList.find(params[:id])
+  def show
+    @todo = @todo_list.todos.new
   end
 
-  def destroy
-    @todo_list = TodoList.find(params[:id])
-    if @todo_list.present?
-      @todo_list.destroy
-    end
-    redirect_to todo_lists_url
-  end
+  # def new
+  #   @todo_list = TodoList.new
+  # end
+
 
   private
-    def todo_list_params
-      params.require(:todo_list).permit(:name)
-    end
+
+  def set_todo_list
+    @todo_list = TodoList.find(params[:id])
+  end
+
+  def todo_list_params
+    params.require(:todo_list).permit(:name)
+  end
 
 end
